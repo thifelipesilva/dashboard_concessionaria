@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import MenuLateral from './components/MenuLateral';
+import Carros from './Pages/Carros';
+import Home from './Pages/Home';
+import Vendas from './Pages/Vendas';
+import Vendedores from './Pages/Vendedores';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='w-full h-screen flex'>
+      <BrowserRouter>
+        <MenuLateral/>
+        <Routes>
+          <Route index element={<Home/>}/>
+          <Route path='/vendedores' element={<Vendedores/>}/>
+          <Route path='/carros' element={<Carros/>}/>
+          <Route path='/vendas' element={<Vendas/>}/>
+        </Routes> 
+      </BrowserRouter>
     </div>
+    
+      
   );
 }
 
