@@ -23,7 +23,7 @@ const MenuLateral = () => {
 
     return (
         <section className='text-teal-600 flex flex-col justify-between h-full p-3 items-center border-solid border-r-4 border-blue-600'>
-            <h1 className='text-xl'>Concessionaria - Gerenciamento</h1>
+            <h1 className='text-xl'>Concessionaria</h1>
             <nav>
                 <ul className=' flex flex-col gap-4 text-xl hover:cursor-pointer '>
                     {

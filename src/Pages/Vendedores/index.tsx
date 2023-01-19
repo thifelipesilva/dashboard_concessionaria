@@ -1,28 +1,26 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BotaoCadastro from "../../components/BotaoCadastro";
+import BotaoExcluir from "../../components/BotaoExcluir";
+import Campo from "../../components/Campo";
+import Titulo from "../../components/Titulo";
+import http from "../../http";
+import IItens from "../../interfaces/IItens";
 
-interface Ivendedores {
-    id: number,
-    nome: string,
-    email: string,
-    createdAt: Date,
-    updatedAt: Date,
-    deletedAt: Date
-}
+
 
 const Vendedores = () => {
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
 
-    const [vendedores, setVendedores] = useState<Ivendedores[]>([]);
+    const [vendedores, setVendedores] = useState<IItens[]>([]);
 
     const reload = useNavigate();
     
     const aoSubmeter = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault();
-        axios.post('http://localhost:8000/vendedores', {
+        http.post('vendedores', {
             nome: nome,
             email: email
         })
@@ -34,7 +32,7 @@ const Vendedores = () => {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:8000/vendedores')
+        http.get('vendedores')
             .then(res => {
                 setVendedores(res.data)
             })
@@ -43,39 +41,28 @@ const Vendedores = () => {
             })
     }, []);
 
-    function excluir(itemASerExlcuido: Ivendedores) {
-        axios.delete(`http://localhost:8000/vendedores/${itemASerExlcuido.id}`)
-            .then(() => {
-                const lista = vendedores.filter(vendedor => vendedor.id !== itemASerExlcuido.id);
-                setVendedores(lista);
-                alert('Vendedor excluído');
-            })
-    }
+
 
     return (
         <section className="flex flex-col w-full h-full p-4">
-            <h2 className="text-3xl text-center mb-2">Vendedores</h2>
+            <Titulo texto="Vendedores" />
 
             <form onSubmit={aoSubmeter} className="flex flex-col gap-y-4 p-16">
-                <input
-                    value={nome}
-                    onChange={evento => setNome(evento.target.value)}
-                    type="text"
-                    placeholder="Nome do Vendedor"
-                    className="p-3 border-solid border-b-2 border-blue-600"
+                <Campo
+                 estado={nome}
+                 setEstado={setNome}
+                 tipo='text'
+                 rotulo="Digite o nome do vendedor"
                 />
 
-                <input
-                    value={email}
-                    onChange={evento => setEmail(evento.target.value)}
-                    type="email"
-                    placeholder="Email do vendedor"
-                    className="p-3 border-solid border-b-2 border-blue-600"
+                <Campo
+                 estado={email}
+                 setEstado={setEmail}
+                 tipo='email'
+                 rotulo="Digite o e-mail do vendedor"
                 />
 
-                <button type="submit" className="p-3 bg-blue-600 text-lg">
-                    Cadastrar
-                </button>
+                <BotaoCadastro/>
             </form>
 
             <table className="p-10 text-center mb-2 border-solid border-b-2 border-blue-600">
@@ -96,12 +83,12 @@ const Vendedores = () => {
                                     <td>{vendedor.nome}</td>
                                     <td>{vendedor.email}</td>
                                     <td>
-                                        <button
-                                         className="bg-red-500 border-solid border-1 p-1 rounded-lg"
-                                         onClick={() => excluir(vendedor)}
-                                        >
-                                            deletar
-                                        </button>
+                                        <BotaoExcluir
+                                         lista={vendedores}
+                                         item={vendedor} 
+                                         setEstado={setVendedores}
+                                         itemRota='vendedores'                                        
+                                        />
                                     </td>
                                 </tr>
                             )

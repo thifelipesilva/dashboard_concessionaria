@@ -3,7 +3,7 @@
     "username": "root",
     "password": "root",
     "database": "drivopsDB",
-    "host": "172.26.0.2",
+    "host": "172.23.0.2",
     "dialect": "mysql"
   },
   "test": {
