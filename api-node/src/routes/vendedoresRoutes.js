@@ -1,8 +1,9 @@
 const { Router } = require('express');
 const VendedoresController = require('../controller/VendedoresController');
+const autenticado = require('../middleware/auth/autenticado');
 
 const router = Router();
-
+router.use(autenticado);
 router
     .get('/vendedores', VendedoresController.mostraTodosVendedores)
     .get('/vendedores/:id', VendedoresController.mostraVendedorPorId)

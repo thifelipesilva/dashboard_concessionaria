@@ -15,7 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Vendas.init({
-    data_venda: DataTypes.DATEONLY
+    data_venda: {
+      type: DataTypes.DATEONLY,
+      validate: {
+        isDate: {
+          args: true,
+          msg: 'Data inválida'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Vendas',

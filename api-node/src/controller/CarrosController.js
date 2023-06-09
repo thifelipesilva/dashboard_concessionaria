@@ -6,10 +6,10 @@ class Carros {
     static async mostraTodosOsCarros(req, res) {
         try {
             const carros = await carrosService.pegaTodosRegistros();
-            return res.status(200).json(carros);
+            res.status(200).json(carros);
             
         } catch (error) {
-            return res.status(400).json(error.message);
+            res.status(400).json(error.message);
         }
     };
 
@@ -17,9 +17,9 @@ class Carros {
         const { id } = req.params;
         try {
             const carro = await carrosService.pegaRegistroPorId(id);
-            return res.status(200).json(carro);
+            carro ? res.status(200).json(carro) : res.status(404).json('carro não existe');                     
         } catch (error) {
-            return res.status(400).json(error.message)
+            res.status(400).json(error.message)
         }
     };
 
@@ -27,9 +27,9 @@ class Carros {
         const dados = req.body;
         try {
             const novoCarro = await carrosService.criaRegistro(dados);
-            return res.status(201).json(novoCarro);
+            res.status(201).json(novoCarro);
         } catch (error) {
-            return res.status(400).json(error.message);            
+            res.status(400).json(error.message);            
         }
     };
 
@@ -39,9 +39,9 @@ class Carros {
 
         try {
             const carroAt = await carrosService.atualizaRegistro(dados, id);
-            return res.status(200).json(carroAt);
+            res.status(200).json(carroAt);
         } catch (error) {
-            return res.status(400).json(error.message);
+            res.status(400).json(error.message);
         }
     };
 
@@ -49,9 +49,9 @@ class Carros {
         const { id } = req.params;
         try {
             await carrosService.deletaRegistro(id);
-            return res.status(200).json(`o id ${id} foi deletado`);
+            res.status(200).json(`o id ${id} foi deletado`);
         } catch (error) {
-            return res.status(400).json(error.message);
+            res.status(400).json(error.message);
         }
     };
 }

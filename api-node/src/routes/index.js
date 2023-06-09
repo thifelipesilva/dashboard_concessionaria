@@ -8,9 +8,10 @@ const usuarios = require('./usuariosRoute');
 module.exports = app => {
     app.use(
         express.json(),
+        usuarios,
         vendedores,
         carros, 
         vendas,
-        usuarios
+        
     );
 };

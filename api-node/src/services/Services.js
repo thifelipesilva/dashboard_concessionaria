@@ -10,7 +10,7 @@ class Services {
     }
 
     async pegaRegistroPorId(id) {
-        return db[this.nomeDoModelo].findAll({ where: { id }})
+        return db[this.nomeDoModelo].findOne({ where: { id }})
     }
 
     async pegaRegistroPorEmail(email) {
@@ -18,6 +18,7 @@ class Services {
     }
 
     async criaRegistro(dados) {
+        
         return db[this.nomeDoModelo].create(dados);
     }
 

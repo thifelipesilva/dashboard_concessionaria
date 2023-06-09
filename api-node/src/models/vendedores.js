@@ -12,8 +12,31 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Vendedores.init({
-    nome: DataTypes.STRING,
-    email: DataTypes.STRING
+    nome: {
+      type: DataTypes.STRING,
+      validate: {
+        validador: dados => {
+          if (dados.length < 3) throw new Error('Nome deve ter mais de três letras')
+        },
+        notEmpty: {
+          args: true,
+          msg: 'Campo nome não pode ser vazio'
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: 'Formato do email inválido'
+        },
+        notEmpty: {
+          args: true,
+          msg: 'Campo e-mail não pode ser vazio'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Vendedores',

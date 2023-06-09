@@ -1,7 +1,10 @@
 const carrosControler = require('../controller/CarrosController');
 const { Router } = require('express');
+const autenticado = require('../middleware/auth/autenticado');
 
 const router = new Router();
+
+router.use(autenticado);
 
 router
     .get('/carros', carrosControler.mostraTodosOsCarros)
