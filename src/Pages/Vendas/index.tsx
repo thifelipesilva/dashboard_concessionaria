@@ -74,7 +74,7 @@ const Vendas = () => {
                  rotulo="Id do carro"
                 />
 
-                <BotaoCadastro/>
+                <BotaoCadastro texto="Cadastrar"/>
             </form>
 
 
@@ -83,7 +83,7 @@ const Vendas = () => {
                 <thead>
                     <tr className="mb-2 border-solid border-b-2 border-blue-600 p-3">
                         <th>Id</th>
-                        {/*<th>Data Venda</th>*/}
+                        <th>Data Venda</th>
                         <th>Vendedor-ID</th>
                         <th>Carro-ID</th>
                         <th>Deletar</th>
@@ -95,7 +95,7 @@ const Vendas = () => {
                             return (
                                 <tr className="border-solid border-b-2 border-blue-600 p-3" key={venda.id}>
                                     <td>{venda.id}</td>
-                                    {/*<td>{venda.data_venda.toString()}</td>*/}                                    
+                                    <td>{venda?.data_venda?.toString()}</td>                                  
                                     <td>{venda.vendedor_id}</td>
                                     <td>{venda.carro_id}</td>
                                     <td>

@@ -73,7 +73,7 @@ const Carros = () => {
                  rotulo='Digite o valor'                
                 />
 
-                <BotaoCadastro/>
+                <BotaoCadastro texto="Cadastrar"/>
             </form>
 
             <table className="p-10 text-center mb-2 border-solid border-b-2 border-blue-600">

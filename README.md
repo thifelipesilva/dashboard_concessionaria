@@ -2,7 +2,7 @@
 
 back-end - node.js, express, sequelize - mysql - Docker
 
-front - react - typeScript - axios 
+front-end - react - typeScript - axios - tailwind
 
 Para Rodar o projeto:
 
@@ -16,11 +16,14 @@ Para Rodar o projeto:
 
    *npm install*
 
-   *docker-compose up -d --build*
+   *docker-compose -f docker-compose-db.yml up -d --build*
 
+   *npm run dev
 
 
 ### serviço - api:
+
+    *Cadastrar e login de Usuários
 
     *Cadastrar, listar,atualizar, deletar(soft delete) e restaurar Vendedores*
 
@@ -28,6 +31,3 @@ Para Rodar o projeto:
 
     *Cadastrar, listar,atualizar, deletar(soft delete) e restaurar vendas*
 
-# link video:
-
-    *https://drive.google.com/drive/folders/1kC_C_yY84Zlw8ZLMtzWBwMrrftR2pdCg?usp=sharing*

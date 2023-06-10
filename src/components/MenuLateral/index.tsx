@@ -5,19 +5,19 @@ const MenuLateral = () => {
     const rotas = [
         {
             label: 'Home',
-            to: '/'
+            to: '/dashboard'
         },
         {
             label: 'Vendedores',
-            to: '/vendedores'
+            to: '/dashboard/vendedores'
         },
         {
             label: 'Carros',
-            to: '/carros'
+            to: '/dashboard/carros'
         },
         {
             label: 'Vendas',
-            to: '/vendas'
+            to: '/dashboard/vendas'
         }
     ];
 

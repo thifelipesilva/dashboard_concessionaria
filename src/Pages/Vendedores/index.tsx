@@ -27,7 +27,9 @@ const Vendedores = () => {
         .then(() => {
             alert('Vendedor cadastrado');
             reload(0);
-        })
+        }).catch(error => {
+            console.log(error.message)
+        });
 
     }
 
@@ -38,7 +40,7 @@ const Vendedores = () => {
             })
             .catch(error => {
                 console.log(error.message)
-            })
+            });
     }, []);
 
 
@@ -62,7 +64,7 @@ const Vendedores = () => {
                  rotulo="Digite o e-mail do vendedor"
                 />
 
-                <BotaoCadastro/>
+                <BotaoCadastro texto="Cadastrar"/>
             </form>
 
             <table className="p-10 text-center mb-2 border-solid border-b-2 border-blue-600">
